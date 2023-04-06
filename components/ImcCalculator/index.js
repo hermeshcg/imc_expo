@@ -11,6 +11,13 @@ import {
 
 const ImcCalculator = () => {
   const [height, setHeight] = useState(0);
+  const [weigth, setWeigth] = useState(0);
+
+  function handleSubmit() {
+    console.log(height);
+    console.log(weigth);
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -19,20 +26,22 @@ const ImcCalculator = () => {
         <Text style={styles.label}>Insira sua altura</Text>
         <TextInput
           style={styles.input}
+          inputMode="decimal"
+          keyboardType="numeric"
           onChangeText={(e) => {
-            console.log('vasco');
+            setHeight(e);
           }}
-          // onBlur={handleBlur('firstName')}
         />
         <Text style={styles.label}>Insira seu peso</Text>
         <TextInput
           style={styles.input}
+          inputMode="numeric"
+          keyboardType="numeric"
           onChangeText={(e) => {
-            console.log('vasco', e);
+            setWeigth(e);
           }}
-          // onBlur={handleBlur('firstName')}
         />
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={handleSubmit}>
           <Text style={styles.btnText}>CALCULAR</Text>
         </TouchableOpacity>
       </View>
@@ -60,6 +69,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     borderRadius: 8,
     color: '#000',
+    paddingHorizontal: 8,
   },
   btn: {
     alignSelf: 'center',
