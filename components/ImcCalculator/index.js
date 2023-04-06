@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 import {
+  Alert,
   StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  TouchableOpacityBase,
   View,
 } from 'react-native';
 
 const ImcCalculator = () => {
   const [height, setHeight] = useState(0);
-  const [weigth, setWeigth] = useState(0);
+  const [weight, setWeight] = useState(0);
 
   function handleSubmit() {
-    console.log(height);
-    console.log(weigth);
+    if (height === 0) {
+      Alert.alert('Atenção!', 'Insira a sua altura');
+      return;
+    }
+    if (weight === 0) {
+      Alert.alert('Atenção!', 'Insira o seu peso');
+      return;
+    }
+    let imc = weight / (height ^ 2);
+    Alert.alert('imc' + imc);
   }
 
   return (
@@ -38,7 +46,7 @@ const ImcCalculator = () => {
           inputMode="numeric"
           keyboardType="numeric"
           onChangeText={(e) => {
-            setWeigth(e);
+            setWeight(e);
           }}
         />
         <TouchableOpacity style={styles.btn} onPress={handleSubmit}>
