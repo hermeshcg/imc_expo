@@ -14,9 +14,9 @@ const ImcCalculator = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Text>CALCULADORA IMC</Text>
       <View style={styles.card}>
-        <Text style={styles.label}> First Name</Text>
+        <Text style={styles.title}>CALCULADORA IMC</Text>
+        <Text style={styles.label}>Insira sua altura</Text>
         <TextInput
           style={styles.input}
           onChangeText={(e) => {
@@ -24,7 +24,7 @@ const ImcCalculator = () => {
           }}
           // onBlur={handleBlur('firstName')}
         />
-        <Text style={styles.label}> First Name</Text>
+        <Text style={styles.label}>Insira seu peso</Text>
         <TextInput
           style={styles.input}
           onChangeText={(e) => {
@@ -33,7 +33,7 @@ const ImcCalculator = () => {
           // onBlur={handleBlur('firstName')}
         />
         <TouchableOpacity style={styles.btn}>
-          <Text>CALCULAR</Text>
+          <Text style={styles.btnText}>CALCULAR</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -42,27 +42,41 @@ const ImcCalculator = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#e0eed3',
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
   card: {
-    backgroundColor: '#ddd',
-    width: '50%',
+    backgroundColor: '#eee',
+    width: '75%',
     padding: 16,
     borderRadius: 16,
   },
-  label: {},
-  input: {
-    backgroundColor: '#ccff00',
+  label: {
     marginBottom: 4,
+  },
+  input: {
+    backgroundColor: '#fff',
+    marginBottom: 4,
+    borderRadius: 8,
+    color: '#000',
   },
   btn: {
     alignSelf: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: '#1b7ced',
     padding: 8,
     marginTop: 8,
     borderRadius: 8,
+    width: '80%',
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+  },
+  btnText: {
+    fontWeight: 'bold',
+    color: '#fff',
+    textAlign: 'center',
   },
 });
 
