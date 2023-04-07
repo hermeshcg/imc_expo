@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 
 const ImcCalculator = () => {
-  const [height, setHeight] = useState(0);
-  const [weight, setWeight] = useState(0);
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
 
   function handleSubmit() {
     if (height === 0) {
@@ -23,7 +23,35 @@ const ImcCalculator = () => {
       return;
     }
     let imc = weight / (height ^ 2);
-    Alert.alert('imc' + imc);
+    imc = imc.toFixed(2);
+    if (imc < 18.5) {
+      Alert.alert(
+        'IMC',
+        `O seu imc é de: ${imc}\nVocê esta na categoria de magreza`
+      );
+    } else if (imc >= 18.5 && imc < 24.9) {
+      Alert.alert(
+        'IMC',
+        `O seu imc é de: ${imc}\nVocê esta na categoria normal`
+      );
+    } else if (imc > 25 && imc < 29.9) {
+      Alert.alert(
+        'IMC',
+        `O seu imc é de: ${imc}\nVocê esta na categoria de sobrepeso`
+      );
+    } else if (imc > 30 && imc < 39.9) {
+      Alert.alert(
+        'IMC',
+        `O seu imc é de: ${imc}\nVocê esta na categoria de obesidade`
+      );
+    } else if (imc > 40) {
+      Alert.alert(
+        'IMC',
+        `O seu imc é de: ${imc}\nVocê esta na categoria obesidade grave`
+      );
+    }
+    setHeight('');
+    setWeight('');
   }
 
   return (
@@ -39,6 +67,7 @@ const ImcCalculator = () => {
           onChangeText={(e) => {
             setHeight(e);
           }}
+          value={height}
         />
         <Text style={styles.label}>Insira seu peso</Text>
         <TextInput
@@ -48,6 +77,7 @@ const ImcCalculator = () => {
           onChangeText={(e) => {
             setWeight(e);
           }}
+          value={weight}
         />
         <TouchableOpacity style={styles.btn} onPress={handleSubmit}>
           <Text style={styles.btnText}>CALCULAR</Text>
